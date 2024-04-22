@@ -1,0 +1,27 @@
+From 4ee88bd1203c15eca727b7a03a28c379821cac71 Mon Sep 17 00:00:00 2001
+From: Will Thompson <will@willthompson.co.uk>
+Date: Tue, 14 Nov 2023 11:36:51 +0000
+Subject: [PATCH] Add some categories to the desktop file
+
+Previously, neither the desktop file nor the metainfo file listed any
+categories for this game. This information is used by software centres
+to list the game in the right section, and by GNOME Shell to set a good
+default name if you drag two games together in the app grid to make a
+folder.
+
+Add the two best-fitting categories to the .desktop file. At the point
+when the repository's AppStream data is built, these will also get
+merged into the metainfo.
+---
+ icebreaker.desktop | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/icebreaker.desktop b/icebreaker.desktop
+index 9056f9e..961e8ef 100644
+--- a/icebreaker.desktop
++++ b/icebreaker.desktop
+@@ -6,3 +6,4 @@ Exec=icebreaker
+ Icon=/usr/share/icebreaker/icebreaker_128.png
+ Terminal=false
+ Keywords=puzzle;game;penguins;ice;
++Categories=Game;LogicGame;
