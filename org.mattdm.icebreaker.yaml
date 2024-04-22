@@ -41,3 +41,5 @@ modules:
         sha256: 29d02d59681faa1e83949b7bae4553720db0247c51ac040bb9f3b516350e9810
       - type: patch
         path: appdata.patch
+      - type: patch
+        path: desktop-categories.patch
