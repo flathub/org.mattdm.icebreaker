@@ -1,6 +1,6 @@
 app-id: org.mattdm.icebreaker
 runtime: org.freedesktop.Platform
-runtime-version: '22.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 command: icebreaker
 rename-desktop-file: icebreaker.desktop
@@ -12,23 +12,22 @@ finish-args:
   - --share=ipc
   - --share=network
   - --device=dri
-
+cleanup:
+  - /include
+  - /lib/pkgconfig
+  - /share/aclocal
+  - /share/man
+  - '*.la'
+  - '*.a'
 modules:
-  - shared-modules/glu/glu-9.json
 
-  - name: sdl12-compat
-    buildsystem: cmake-ninja
-    sources:
-      - type: archive
-        url: https://github.com/libsdl-org/sdl12-compat/archive/refs/tags/release-1.2.52.tar.gz
-        sha256: 5bd7942703575554670a8767ae030f7921a0ac3c5e2fd173a537b7c7a8599014
-    cleanup:
-      - 'bin/sdl-config'
-
+  - shared-modules/SDL/sdl12-compat.json
   - shared-modules/SDL/SDL_mixer-1.2.12.json
 
   - name: icebreaker
     buildsystem: simple
+    build-options:
+        cflags: -Wno-error=format-truncation
     build-commands:
       - make prefix=${FLATPAK_DEST}
       - make install prefix=${FLATPAK_DEST}
